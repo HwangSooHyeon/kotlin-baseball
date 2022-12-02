@@ -1,5 +1,7 @@
 package baseball.ui.input
 
+import camp.nextstep.edu.missionutils.Console
+
 class InputView {
 
     private val validateInput = ValidateInput()
@@ -23,4 +25,6 @@ class InputView {
             readStatusNumber(number)
         }
     }
+
+    fun getNumbers(): String = Console.readLine().trim()
 }
