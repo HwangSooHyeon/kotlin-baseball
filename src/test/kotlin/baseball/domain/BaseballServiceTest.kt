@@ -15,7 +15,7 @@ internal class BaseballServiceTest {
     fun `숫자 생성 함수 원소 테스트`() {
         val testNumbers = baseballService.makeNumbers()
         for (testNumber in testNumbers) {
-            assertThat(testNumber).isBetween(START, END).also { println(it) }
+            assertThat(testNumber.also { println(it) }).isBetween(START, END)
         }
     }
 
