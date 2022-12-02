@@ -9,13 +9,21 @@ internal class ValidateInputTest {
     private val validateInput = ValidateInput()
 
     @ParameterizedTest
-    @CsvSource(DIGIT_EXCEPTION, SIZE_EXCEPTION)
+    @CsvSource(DIGIT_EXCEPTION, SIZE_EXCEPTION, DISTINCT_EXCEPTION)
     fun `게임 숫자 예외 처리 함수 테스트`(numbers: String) {
         assertThrows<IllegalArgumentException> { validateInput.validateGameNumbers(numbers) }
+    }
+
+    @ParameterizedTest
+    @CsvSource(DIGIT_EXCEPTION, CORRECT_EXCEPTION)
+    fun `게임 상태 예외 처리 함수 테스트`(number: String) {
+        assertThrows<IllegalArgumentException> { validateInput.validateStatusNumber(number) }
     }
 
     companion object {
         private const val DIGIT_EXCEPTION = "12a"
         private const val SIZE_EXCEPTION = "1234"
+        private const val DISTINCT_EXCEPTION = "133"
+        private const val CORRECT_EXCEPTION = "3"
     }
 }
