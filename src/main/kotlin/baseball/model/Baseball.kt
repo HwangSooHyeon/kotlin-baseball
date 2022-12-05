@@ -2,7 +2,7 @@ package baseball.model
 
 class Baseball(private val numbers: List<Int>) {
 
-    fun compare(others: List<Int>): String {
+    fun compare(others: Baseball): String {
         if (equal(others))
             return "3스트라이크"
         val (ball, strike) = count(others)
@@ -20,22 +20,22 @@ class Baseball(private val numbers: List<Int>) {
         return "${ball}볼 ${strike}스트라이크"
     }
 
-    private fun equal(others: List<Int>): Boolean {
+    private fun equal(others: Baseball): Boolean {
         for (i in numbers.indices) {
-            if (numbers[i] != others[0])
+            if (numbers[i] != others.numbers[0])
                 return false
         }
         return true
     }
 
-    private fun count(others: List<Int>): Pair<Int, Int> {
+    private fun count(others: Baseball): Pair<Int, Int> {
         var (ball, strike) = 0 to 0
-        for (i in others.indices) {
-            if (numbers[i] == others[i]) {
+        for (i in others.numbers.indices) {
+            if (numbers[i] == others.numbers[i]) {
                 strike += 1
                 continue
             }
-            ball = ballCount(others[i], ball)
+            ball = ballCount(others.numbers[i], ball)
         }
         return ball to strike
     }
