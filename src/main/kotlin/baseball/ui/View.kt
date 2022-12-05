@@ -9,9 +9,16 @@ class View {
     private val outputView = OutputView()
     fun startView() = outputView.printStart()
 
-    fun inputGameNumberView(): List<Int> = inputView.readGameNumbers(inputView.getNumbers())
+    fun inputGameNumbersView(): List<Int> {
+        outputView.printInputGameNumbers()
+        return inputView.readGameNumbers(inputView.getNumbers())
+    }
 
     fun countView(count: String) = outputView.printCount(count)
 
-
+    fun inputStatusNumberView(): Int {
+        outputView.printEnd()
+        outputView.printInputStatusNumber()
+        return inputView.readStatusNumber(inputView.getNumbers())
+    }
 }
